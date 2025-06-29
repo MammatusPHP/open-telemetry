@@ -1,0 +1,18 @@
+parameters:
+	excludePaths:
+		- ../../src/Generated/*
+	ignoreErrors:
+		-
+			identifier: ergebnis.noParameterWithNullableTypeDeclaration
+			path: ../../etc/di/logger.php
+		-
+			message: '#Strict comparison using === between class-string\<Mammatus\\Contracts\\Bootable\<T of Mammatus\\Contracts\\Argv \(class Mammatus\\Boot, argument\)\>\> and#'
+			path: ../../src/Boot.php
+		-
+			identifier: shipmonk.deadMethod
+			path: ../../src/Boot.php
+
+	ergebnis:
+		noExtends:
+			classesAllowedToBeExtended:
+				- Psr\Log\AbstractLogger
