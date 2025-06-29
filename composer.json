@@ -1,0 +1,52 @@
+{
+    "name": "mammatus/open-telemetry",
+    "description": "\ud83d\udd75\ufe0f Open Telemetry integration",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "wyrihaximus/makefiles": "^0.4.3",
+        "wyrihaximus/test-utilities": "^7.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mammatus\\OpenTelemetry\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mammatus\\Tests\\OpenTelemetry\\": "tests"
+        }
+    },
+    "bin": [
+        "bin/mammatus"
+    ],
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupol/composer-packages": true,
+            "ergebnis/composer-normalize": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true,
+            "mindplay/composer-locator": true,
+            "phpstan/extension-installer": true,
+            "wyrihaximus/broadcast": true,
+            "wyrihaximus/makefiles": true
+        },
+        "platform": {
+            "php": "8.3.13"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer normalize || true",
+            "composer update --lock --no-scripts"
+        ],
+        "post-update-cmd": [
+            "composer normalize",
+            "composer update --lock --no-scripts"
+        ]
+    }
+}
