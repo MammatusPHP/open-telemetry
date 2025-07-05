@@ -6,6 +6,9 @@ parameters:
 		-
 			identifier: ergebnis.noParameterWithNullableTypeDeclaration
 			path: ../../src/OtlpHttpTransportFactory.php
+		-
+			identifier: missingType.iterableValue
+			path: ../../src/PsrTransport.php
 
 #	ergebnis:
 #		noExtends:
