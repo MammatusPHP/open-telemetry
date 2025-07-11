@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Mammatus\OpenTelemetry;
 
-use Mammatus\LifeCycleEvents\Initialize;
+use Mammatus\LifeCycleEvents\Kernel;
 use Mammatus\LifeCycleEvents\Shutdown;
 use OpenTelemetry\Contrib\Otlp\LogsExporterFactory;
 use OpenTelemetry\Contrib\Otlp\MetricExporterFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporterFactory;
-use OpenTelemetry\SDK\Common\Configuration\Configuration;
-use OpenTelemetry\SDK\Common\Configuration\Variables;
 use OpenTelemetry\SDK\Common\Instrumentation\InstrumentationScopeFactory;
 use OpenTelemetry\SDK\Logs\LoggerProvider;
 use OpenTelemetry\SDK\Logs\LoggerProviderInterface;
@@ -41,11 +39,13 @@ final readonly class Otlp implements AsyncListener
     /** @phpstan-ignore shipmonk.deadMethod */
     public function __construct(Browser $browser)
     {
-        $resource         = ResourceInfoFactory::defaultResource();
-        $transportFactory = new OtlpHttpTransportFactory($browser);
-        $emitMetrics      = Configuration::getBoolean(Variables::OTEL_PHP_INTERNAL_METRICS_ENABLED);
-
-        $meterExporter = (new MetricExporterFactory($transportFactory))->create();
+        $transportFactory     = new OtlpHttpTransportFactory($browser);
+        $spanExporter         = (new SpanExporterFactory($transportFactory))->create();
+        $this->tracerProvider =  new TracerProvider(
+            new SimpleSpanProcessor($spanExporter),
+        );
+        $logsExporter         = (new LogsExporterFactory($transportFactory))->create();
+        $meterExporter        = (new MetricExporterFactory($transportFactory))->create();
 
         // @todo "The exporter MUST be paired with a periodic exporting MetricReader"
         $reader   = new ExportingReader($meterExporter);
@@ -57,21 +57,14 @@ final readonly class Otlp implements AsyncListener
             ->setExemplarFilter(new AllExemplarFilter())
             ->build();
 
-        $logsExporter = (new LogsExporterFactory($transportFactory))->create();
-
         $processor                   = (new LogRecordProcessorFactory())->create($logsExporter, $this->meterProvider);
         $instrumentationScopeFactory = new InstrumentationScopeFactory((new LogRecordLimitsBuilder())->build()->getAttributeFactory());
 
         $this->loggerProvider = new LoggerProvider($processor, $instrumentationScopeFactory, $resource);
-
-        $spanExporter         = (new SpanExporterFactory($transportFactory))->create();
-        $this->tracerProvider =  new TracerProvider(
-            new SimpleSpanProcessor($spanExporter),
-        );
     }
 
     /** @phpstan-ignore shipmonk.deadMethod */
-    public function initialize(Initialize $initialize): void
+    public function kernel(Kernel $kernel): void
     {
         Sdk::builder()
             ->setAutoShutdown(true)
@@ -81,13 +74,16 @@ final readonly class Otlp implements AsyncListener
             ->setPropagator((new PropagatorFactory())->create())
             ->buildAndRegisterGlobal();
 
+        Loop::addPeriodicTimer(1, async(fn (): bool => $this->tracerProvider->forceFlush()));
+        Loop::addPeriodicTimer(1, async(fn (): bool => $this->meterProvider->forceFlush()));
         Loop::addPeriodicTimer(1, async(fn (): bool => $this->loggerProvider->forceFlush(null)));
     }
 
     /** @phpstan-ignore shipmonk.deadMethod */
     public function shutdown(Shutdown $shutdown): void
     {
-        $this->tracerProvider->shutdown();
-        $this->loggerProvider->shutdown();
+        Loop::addTimer(3, async(fn (): bool => $this->tracerProvider->shutdown()));
+        Loop::addTimer(3, async(fn (): bool => $this->meterProvider->shutdown()));
+        Loop::addTimer(3, async(fn (): bool => $this->loggerProvider->shutdown()));
     }
 }

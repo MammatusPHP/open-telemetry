@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\OpenTelemetry;
 
-use OpenTelemetry\SDK\Common\Export\Http\PsrTransportFactory;
+use Http\Discovery\Psr17FactoryDiscovery;
+use OpenTelemetry\SDK\Common\Export\Http\PsrUtils;
 use OpenTelemetry\SDK\Common\Export\TransportFactoryInterface;
 use OpenTelemetry\SDK\Common\Export\TransportInterface;
 use Psr\Http\Client\ClientInterface;
@@ -42,17 +43,27 @@ final readonly class OtlpHttpTransportFactory implements TransportFactoryInterfa
             $compression = null;
         }
 
-        return (new PsrTransportFactory(new readonly class ($this->browser) implements ClientInterface
-        {
-            public function __construct(private Browser $browser)
+        return new PsrTransport(
+            new readonly class ($this->browser) implements ClientInterface
             {
-            }
+                public function __construct(private Browser $browser)
+                {
+                }
 
-            public function sendRequest(RequestInterface $request): ResponseInterface
-            {
-                return await($this->browser->request($request->getMethod(), (string) $request->getUri(), $request->getHeaders(), (string) $request->getBody()));
-            }
-        }))
-            ->create($endpoint, $contentType, $headers, $compression, $timeout, $retryDelay, $maxRetries, $cacert, $cert, $key);
+                public function sendRequest(RequestInterface $request): ResponseInterface
+                {
+                    return await($this->browser->request($request->getMethod(), (string) $request->getUri(), $request->getHeaders(), $request->getBody()->getContents()));
+                }
+            },
+            Psr17FactoryDiscovery::findRequestFactory(),
+            new PsrStreamFactory(),
+            $endpoint,
+            $contentType,
+            $headers,
+            /** @phpstan-ignore staticMethod.internalClass */
+            PsrUtils::compression($compression),
+            $retryDelay,
+            $maxRetries,
+        );
     }
 }
