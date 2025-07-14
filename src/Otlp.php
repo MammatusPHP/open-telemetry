@@ -25,16 +25,19 @@ use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 use OpenTelemetry\SDK\Trace\TracerProviderInterface;
 use React\EventLoop\Loop;
+use React\EventLoop\TimerInterface;
 use React\Http\Browser;
 use WyriHaximus\Broadcast\Contracts\AsyncListener;
 
 use function React\Async\async;
 
-final readonly class Otlp implements AsyncListener
+final class Otlp implements AsyncListener
 {
-    private LoggerProviderInterface $loggerProvider;
-    private TracerProviderInterface $tracerProvider;
-    private MeterProviderInterface $meterProvider;
+    private readonly LoggerProviderInterface $loggerProvider;
+    private readonly TracerProviderInterface $tracerProvider;
+    private readonly MeterProviderInterface $meterProvider;
+    /** @var array<TimerInterface> */
+    private array $timers = [];
 
     /** @phpstan-ignore shipmonk.deadMethod */
     public function __construct(Browser $browser)
@@ -74,14 +77,20 @@ final readonly class Otlp implements AsyncListener
             ->setPropagator((new PropagatorFactory())->create())
             ->buildAndRegisterGlobal();
 
-        Loop::addPeriodicTimer(1, async(fn (): bool => $this->tracerProvider->forceFlush()));
-        Loop::addPeriodicTimer(1, async(fn (): bool => $this->meterProvider->forceFlush()));
-        Loop::addPeriodicTimer(1, async(fn (): bool => $this->loggerProvider->forceFlush(null)));
+        $this->timers[] = Loop::addPeriodicTimer(1, async(fn (): bool => $this->tracerProvider->forceFlush()));
+        $this->timers[] = Loop::addPeriodicTimer(1, async(fn (): bool => $this->meterProvider->forceFlush()));
+        $this->timers[] = Loop::addPeriodicTimer(1, async(fn (): bool => $this->loggerProvider->forceFlush(null)));
     }
 
     /** @phpstan-ignore shipmonk.deadMethod */
     public function shutdown(Shutdown $shutdown): void
     {
+        foreach ($this->timers as $timer) {
+            Loop::cancelTimer($timer);
+        }
+
+        $this->timers = [];
+
         Loop::addTimer(3, async(fn (): bool => $this->tracerProvider->shutdown()));
         Loop::addTimer(3, async(fn (): bool => $this->meterProvider->shutdown()));
         Loop::addTimer(3, async(fn (): bool => $this->loggerProvider->shutdown()));
