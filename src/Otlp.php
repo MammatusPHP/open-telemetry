@@ -6,6 +6,7 @@ namespace Mammatus\OpenTelemetry;
 
 use Mammatus\LifeCycleEvents\Kernel;
 use Mammatus\LifeCycleEvents\Shutdown;
+use OpenTelemetry\API\Common\Time\Clock;
 use OpenTelemetry\Contrib\Otlp\LogsExporterFactory;
 use OpenTelemetry\Contrib\Otlp\MetricExporterFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporterFactory;
@@ -21,7 +22,7 @@ use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
 use OpenTelemetry\SDK\Propagation\PropagatorFactory;
 use OpenTelemetry\SDK\Resource\ResourceInfoFactory;
 use OpenTelemetry\SDK\Sdk;
-use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
+use OpenTelemetry\SDK\Trace\SpanProcessor\BatchSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 use OpenTelemetry\SDK\Trace\TracerProviderInterface;
 use React\EventLoop\Loop;
@@ -45,7 +46,7 @@ final class Otlp implements AsyncListener
         $transportFactory     = new OtlpHttpTransportFactory($browser);
         $spanExporter         = new SpanExporterFactory($transportFactory)->create();
         $this->tracerProvider =  new TracerProvider(
-            new SimpleSpanProcessor($spanExporter),
+            new BatchSpanProcessor($spanExporter, Clock::getDefault()),
         );
         $logsExporter         = new LogsExporterFactory($transportFactory)->create();
         $meterExporter        = new MetricExporterFactory($transportFactory)->create();
