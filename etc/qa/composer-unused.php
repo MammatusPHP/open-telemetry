@@ -7,4 +7,5 @@ use ComposerUnused\ComposerUnused\Configuration\PatternFilter;
 
 return static fn(Configuration $config): Configuration => $config
     ->addPatternFilter(PatternFilter::fromString('/open-telemetry\/.*/'))
+    ->addPatternFilter(PatternFilter::fromString('/react-inspector\/.*/'))
 ;

@@ -43,12 +43,12 @@ final class Otlp implements AsyncListener
     public function __construct(Browser $browser)
     {
         $transportFactory     = new OtlpHttpTransportFactory($browser);
-        $spanExporter         = (new SpanExporterFactory($transportFactory))->create();
+        $spanExporter         = new SpanExporterFactory($transportFactory)->create();
         $this->tracerProvider =  new TracerProvider(
             new SimpleSpanProcessor($spanExporter),
         );
-        $logsExporter         = (new LogsExporterFactory($transportFactory))->create();
-        $meterExporter        = (new MetricExporterFactory($transportFactory))->create();
+        $logsExporter         = new LogsExporterFactory($transportFactory)->create();
+        $meterExporter        = new MetricExporterFactory($transportFactory)->create();
 
         // @todo "The exporter MUST be paired with a periodic exporting MetricReader"
         $reader   = new ExportingReader($meterExporter);
@@ -60,8 +60,8 @@ final class Otlp implements AsyncListener
             ->setExemplarFilter(new AllExemplarFilter())
             ->build();
 
-        $processor                   = (new LogRecordProcessorFactory())->create($logsExporter, $this->meterProvider);
-        $instrumentationScopeFactory = new InstrumentationScopeFactory((new LogRecordLimitsBuilder())->build()->getAttributeFactory());
+        $processor                   = new LogRecordProcessorFactory()->create($logsExporter, $this->meterProvider);
+        $instrumentationScopeFactory = new InstrumentationScopeFactory(new LogRecordLimitsBuilder()->build()->getAttributeFactory());
 
         $this->loggerProvider = new LoggerProvider($processor, $instrumentationScopeFactory, $resource);
     }
@@ -74,7 +74,7 @@ final class Otlp implements AsyncListener
             ->setTracerProvider($this->tracerProvider)
             ->setLoggerProvider($this->loggerProvider)
             ->setMeterProvider($this->meterProvider)
-            ->setPropagator((new PropagatorFactory())->create())
+            ->setPropagator(new PropagatorFactory()->create())
             ->buildAndRegisterGlobal();
 
         $this->timers[] = Loop::addPeriodicTimer(1, async(fn (): bool => $this->tracerProvider->forceFlush()));
