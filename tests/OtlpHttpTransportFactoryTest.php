@@ -29,7 +29,7 @@ final class OtlpHttpTransportFactoryTest extends AsyncTestCase
             'abc',
         )->once()->andReturn(resolve(new Response()));
 
-        $ohtf = (new OtlpHttpTransportFactory($browser))->create('https://example.com/v1/otlp', 'application/json+protobuf');
+        $ohtf = new OtlpHttpTransportFactory($browser)->create('https://example.com/v1/otlp', 'application/json+protobuf');
         $ohtf->send('abc')->await();
     }
 }
