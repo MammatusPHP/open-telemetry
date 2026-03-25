@@ -14,7 +14,7 @@
     "open-telemetry/opentelemetry-auto-psr15": "^1.1",
     "open-telemetry/opentelemetry-auto-psr16": "^0.0.5",
     "open-telemetry/opentelemetry-auto-psr18": "^1.1",
-    "open-telemetry/opentelemetry-auto-reactphp": "^0.3.0",
+    "open-telemetry/opentelemetry-auto-reactphp": "^0.3.0 || ^0.4.0",
     "open-telemetry/opentelemetry-logger-monolog": "^1.1",
     "open-telemetry/sdk": "^1.6",
     "open-telemetry/sem-conv": "^1.32.1",

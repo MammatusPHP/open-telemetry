@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fab05ac24512d5a6c9fef5c5a4f029a5",
+    "content-hash": "de173adadd77182c9f69ad21a4a490f2",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1231,16 +1231,16 @@
         },
         {
             "name": "open-telemetry/opentelemetry-auto-reactphp",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/contrib-auto-reactphp.git",
-                "reference": "c6e9f6ed19729e3bf5c0c2be8cbbb2830c8de410"
+                "reference": "b1f5caa0581dd63af43ed3c692926236b41d3e32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-reactphp/zipball/c6e9f6ed19729e3bf5c0c2be8cbbb2830c8de410",
-                "reference": "c6e9f6ed19729e3bf5c0c2be8cbbb2830c8de410",
+                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-reactphp/zipball/b1f5caa0581dd63af43ed3c692926236b41d3e32",
+                "reference": "b1f5caa0581dd63af43ed3c692926236b41d3e32",
                 "shasum": ""
             },
             "require": {
@@ -1276,7 +1276,7 @@
                 "Apache-2.0"
             ],
             "description": "OpenTelemetry auto-instrumentation for ReactPHP's HTTP Browser.",
-            "homepage": "https://opentelemetry.io/docs/php",
+            "homepage": "https://opentelemetry.io/docs/languages/php/",
             "keywords": [
                 "async",
                 "instrumentation",
@@ -1287,10 +1287,9 @@
                 "tracing"
             ],
             "support": {
-                "issues": "https://github.com/opentelemetry-php/contrib-auto-reactphp/issues",
-                "source": "https://github.com/opentelemetry-php/contrib-auto-reactphp/tree/0.3.0"
+                "source": "https://github.com/opentelemetry-php/contrib-auto-reactphp/tree/0.4.0"
             },
-            "time": "2025-06-11T18:16:26+00:00"
+            "time": "2026-03-24T16:33:16+00:00"
         },
         {
             "name": "open-telemetry/opentelemetry-logger-monolog",
@@ -12241,5 +12240,5 @@
     "platform-overrides": {
         "php": "8.4.13"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
