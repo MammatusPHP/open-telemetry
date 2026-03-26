@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b98a8b4f54d1f1f00a6ad38b6e18ab6",
+    "content-hash": "8aa57fca61979eb3973ad589a7d259fd",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -12151,16 +12151,16 @@
         },
         {
             "name": "wyrihaximus/makefiles",
-            "version": "0.6.0",
+            "version": "0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/Makefiles.git",
-                "reference": "f29f168198c37cb410b85bf08c2c81aab32e322b"
+                "reference": "aae3aa61765f5f570cfe338e26e2e0061383dc23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/f29f168198c37cb410b85bf08c2c81aab32e322b",
-                "reference": "f29f168198c37cb410b85bf08c2c81aab32e322b",
+                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/aae3aa61765f5f570cfe338e26e2e0061383dc23",
+                "reference": "aae3aa61765f5f570cfe338e26e2e0061383dc23",
                 "shasum": ""
             },
             "require": {
@@ -12168,8 +12168,11 @@
                 "ext-json": "^8.4",
                 "php": "^8.4"
             },
+            "conflict": {
+                "infection/infection": "<0.32.0"
+            },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^8.0.0"
+                "wyrihaximus/test-utilities": "^12.0.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -12193,7 +12196,7 @@
             "description": "🧱 Makefile building blocks",
             "support": {
                 "issues": "https://github.com/WyriHaximus/Makefiles/issues",
-                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.6.0"
+                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.10.3"
             },
             "funding": [
                 {
@@ -12201,7 +12204,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-20T07:50:55+00:00"
+            "time": "2026-03-12T06:38:36+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-react",

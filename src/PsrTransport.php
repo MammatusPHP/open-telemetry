@@ -58,7 +58,6 @@ final class PsrTransport implements TransportInterface
     }
 
     /**
-     * @psalm-suppress ArgumentTypeCoercion
      * @phpstan-ignore missingType.generics,ergebnis.noParameterWithNullDefaultValue,ergebnis.noParameterWithNullableTypeDeclaration
      */
     public function send(string $payload, CancellationInterface|null $cancellation = null): FutureInterface
