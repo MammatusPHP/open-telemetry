@@ -30,7 +30,7 @@
     "react-inspector/socket": "^0.1",
     "react/async": "^4.3",
     "react/event-loop": "^1.5",
-    "react/filesystem": "^0.2@dev",
+    "react/filesystem": "0.1.2@dev",
     "react/http": "^1.11",
     "react/promise-stream": "^1.7",
     "react/promise-timer": "^1.11",
