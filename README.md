@@ -16,6 +16,24 @@ To install via [Composer](http://getcomposer.org/), use the command below, it wi
 composer require mammatus/open-telemetry
 ```
 
+# Fibers and tracing
+
+This package propagates OpenTelemetry context across [ReactPHP](https://reactphp.org/) fibers and supports `#[WithSpan]` without enabling attribute hooks (which corrupt the Zend heap under fibers). See [ADR 001](etc/adr/001-fiber-context-and-withspan.md) for the full design.
+
+Bootstrap happens automatically via [`src/register.php`](src/register.php) (`Bootstrap::once()`).
+
+## Environment
+
+| Variable / ini | Typical value | Purpose |
+|----------------|---------------|---------|
+| `OTEL_PHP_FIBERS_ENABLED` | `true` on NTS, `false` on ZTS | Native vs userland fiber context ([docs](https://opentelemetry.io/docs/languages/php/)) |
+| `opentelemetry.attr_hooks_enabled` | `Off` | Use `hook()` for `#[WithSpan]` instead of attr hooks |
+| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `all` in tests | Disable auto-instrumentation noise in PHPUnit |
+
+## Monkey-patch
+
+On `composer install`, dependent packages that call `React\Async\async` are rewritten to `Mammatus\OpenTelemetry\async` so fiber context forks happen without code changes. See the ADR for trade-offs.
+
 # Todo
 
 - [X] Port initial implementation over from private project

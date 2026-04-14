@@ -16,6 +16,7 @@ use Psr\Http\Client\NetworkExceptionInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use React\EventLoop\Loop;
 use RuntimeException;
 use Throwable;
 
@@ -34,7 +35,12 @@ use function trim;
  */
 final class PsrTransport implements TransportInterface
 {
+    /** 3 seconds after the provider shutdown timers (also 3s). */
+    public const float STOP_ACCEPTING_DELAY = 6.0;
+
     private bool $closed = false;
+    private bool $shutdownMode = false;
+    private bool $shutdownCalled = false;
 
     /**
      * @psalm-param CONTENT_TYPE $contentType
@@ -49,12 +55,25 @@ final class PsrTransport implements TransportInterface
         private readonly array $compression,
         private readonly int $retryDelay,
         private readonly int $maxRetries,
+        private readonly float $stopAcceptingDelay,
     ) {
     }
 
     public function contentType(): string
     {
         return $this->contentType;
+    }
+
+    public function enterShutdownMode(): void
+    {
+        if ($this->shutdownMode || $this->closed) {
+            return;
+        }
+
+        $this->shutdownMode = true;
+        Loop::addTimer($this->stopAcceptingDelay, function (): void {
+            $this->closed = true;
+        });
     }
 
     /**
@@ -109,9 +128,9 @@ final class PsrTransport implements TransportInterface
 
             try {
                 await(sleep($delay));
-            } catch (Throwable $e) {
+            } catch (Throwable $e) { // @codeCoverageIgnoreStart
                 return new ErrorFuture(new RuntimeException('Export cancelled', 0, $e));
-            }
+            } // @codeCoverageIgnoreEnd
         }
 
         /** @phpstan-ignore ergebnis.noIsset */
@@ -148,8 +167,14 @@ final class PsrTransport implements TransportInterface
     /** @phpstan-ignore ergebnis.noParameterWithNullableTypeDeclaration,ergebnis.noParameterWithNullDefaultValue */
     public function shutdown(CancellationInterface|null $cancellation = null): bool
     {
-        if ($this->closed) {
+        if ($this->closed || $this->shutdownCalled) {
             return false;
+        }
+
+        $this->shutdownCalled = true;
+
+        if ($this->shutdownMode) {
+            return true;
         }
 
         $this->closed = true;
