@@ -1,0 +1,654 @@
+{
+    "installedJsonHash": "2822baffd3ebcce4636bb3c4bd1dd64c",
+    "fileHashes": {
+        "src\/Otlp.php": "17653ec33787674810d7df557ac35e11",
+        "src\/OtlpHttpTransportFactory.php": "6250d3b5ee303e628435bb4f3b039b2d",
+        "src\/PsrStreamFactory.php": "ace7a4d54286ced631b12233580c078d",
+        "src\/PsrTransport.php": "5d76bd3eb73181899c8982032faeee07",
+        "src\/Composer\/Item.php": "d9fc9e194ce768e3418bbca6c06196e0",
+        "src\/Composer\/MonkeyPatcher.php": "77b91da9b2e2298602e37501d6da57f7",
+        "src\/Composer\/Plugin.php": "f4bb7173e53eafa28d26facf9a2258a9",
+        "src\/Composer\/ProjectRoot.php": "56b07d52579b80b78626ddd2b913c25b",
+        "src\/Composer\/Collector.php": "383b3bb3a408a8f42144f97f0d96d013",
+        "src\/Fiber\/Factory.php": "c747e423d9281ecb48024b7ca737e024",
+        "src\/Fiber\/Observer.php": "9878534290213a95d8b6f889466d09f0",
+        "vendor\/open-telemetry\/opentelemetry-auto-reactphp\/src\/HeadersPropagator.php": "36ad06e88fd1a989009c73939930b324",
+        "vendor\/open-telemetry\/opentelemetry-auto-reactphp\/src\/ReactPHPInstrumentation.php": "1fb21fddf98ca1d6a4d065413da49986",
+        "vendor\/react\/dns\/src\/Resolver\/Resolver.php": "5ea410992467744cf2c016230f633673",
+        "vendor\/react\/dns\/src\/Resolver\/Factory.php": "7b59cf234437af7ab00843eb8b5851b1",
+        "vendor\/react\/dns\/src\/Resolver\/ResolverInterface.php": "d99df2956146fe6805d6f4905500fb9e",
+        "vendor\/react\/dns\/src\/Model\/Message.php": "394d00f60ffa9db8d5562b7a80db01ec",
+        "vendor\/react\/dns\/src\/Model\/Record.php": "514ee64fe6868f59f3083148421fb6cf",
+        "vendor\/react\/dns\/src\/Query\/UdpTransportExecutor.php": "e01007a54d2487fa1e649d08f844db5b",
+        "vendor\/react\/dns\/src\/Query\/HostsFileExecutor.php": "f359497006beab418982b1abb184d577",
+        "vendor\/react\/dns\/src\/Query\/Query.php": "13c28dfb2b8ccb4e9e18ea996648a7f1",
+        "vendor\/react\/dns\/src\/Query\/CachingExecutor.php": "e762b9bdf88b8420b6939f1effebef9e",
+        "vendor\/react\/dns\/src\/Query\/ExecutorInterface.php": "9234e0e1ceb67aff753036c6e0534997",
+        "vendor\/react\/dns\/src\/Query\/FallbackExecutor.php": "5b28ba9cf2f678a8d06134215463b5d1",
+        "vendor\/react\/dns\/src\/Query\/CoopExecutor.php": "27502422453d7aa6419646e768e5f99d",
+        "vendor\/react\/dns\/src\/Query\/TcpTransportExecutor.php": "1ff149ad5f46ec0368350d2507704042",
+        "vendor\/react\/dns\/src\/Query\/RetryExecutor.php": "60926f05d456177015aa3edcb5d53128",
+        "vendor\/react\/dns\/src\/Query\/TimeoutExecutor.php": "e6d4e03c0464433b9a808963486b5081",
+        "vendor\/react\/dns\/src\/Query\/SelectiveTransportExecutor.php": "09d6f5df5530332aa3fea91a8ae65edc",
+        "vendor\/react\/dns\/src\/Config\/HostsFile.php": "669ae6c127cfe5ea5a34d58b7361cd45",
+        "vendor\/react\/dns\/src\/Config\/Config.php": "0ed3c4aec08bcef5aa3d11d48b5758ac",
+        "vendor\/react\/dns\/src\/Protocol\/Parser.php": "50d5bcf28fc4a9106c096ee55923ba4e",
+        "vendor\/react\/dns\/src\/Protocol\/BinaryDumper.php": "8ab1e090c43e62c7880789824c7557c5",
+        "vendor\/react\/filesystem\/src\/PollInterface.php": "7f5f2de4d6710f01ee1d6472d84dd4ef",
+        "vendor\/react\/filesystem\/src\/Uv\/StatTrait.php": "e5d91461ed144f0c9ada88e3eb6689ae",
+        "vendor\/react\/filesystem\/src\/Uv\/Directory.php": "e52cc484e37bc2320ec0bc64a7945d70",
+        "vendor\/react\/filesystem\/src\/Uv\/Poll.php": "25a5ceb026310760b690b76bb5a2c69a",
+        "vendor\/react\/filesystem\/src\/Uv\/NotExist.php": "b340d4e58c73c8671cfa23a7a078fd37",
+        "vendor\/react\/filesystem\/src\/Uv\/Adapter.php": "2bade6d994c00d65b223fa2a9dc15ae1",
+        "vendor\/react\/filesystem\/src\/Uv\/File.php": "6f791ae40df070831631467c24a7946b",
+        "vendor\/react\/filesystem\/src\/Fallback\/StatTrait.php": "027fda0289b9016c7a3bae487d46371d",
+        "vendor\/react\/filesystem\/src\/Fallback\/Directory.php": "8ed08474613eda224ed235f0451b93ab",
+        "vendor\/react\/filesystem\/src\/Fallback\/NotExist.php": "5ac4c07ba0945ed92f1cb18e200f8150",
+        "vendor\/react\/filesystem\/src\/Fallback\/Adapter.php": "f76caa4401bef7813690479cad7ab861",
+        "vendor\/react\/filesystem\/src\/Fallback\/File.php": "c27ff8983d2320e9b5a36e2080859c08",
+        "vendor\/react\/filesystem\/src\/FlagResolver.php": "ab7519ea7e69aec6a4efea7f72b11c01",
+        "vendor\/react\/filesystem\/src\/Factory.php": "5b72cbe23b41b5bb18cbf810e4f08ceb",
+        "vendor\/react\/filesystem\/src\/ModeTypeDetector.php": "3562549500d2177376f2021b911e7ba8",
+        "vendor\/react\/filesystem\/src\/TypeDetectorInterface.php": "ccc6c7573237efa943f8576dafec13f9",
+        "vendor\/react\/filesystem\/src\/Stat.php": "bd16cb33d383a141d0188a2b997820e7",
+        "vendor\/react\/filesystem\/src\/Node\/NodeInterface.php": "ee53fad5936b1a5a0489414293bf5cb5",
+        "vendor\/react\/filesystem\/src\/Node\/DirectoryInterface.php": "c2e5fd3076af90bf14847f68ce268041",
+        "vendor\/react\/filesystem\/src\/Node\/NotExistInterface.php": "b6d553075465e924d6a33d9f2a978d32",
+        "vendor\/react\/filesystem\/src\/Node\/FileInterface.php": "893cc4663598562114f952c0887d4918",
+        "vendor\/react\/filesystem\/src\/Eio\/EventStream.php": "3deb64538366c57d34f6fdae97423f3f",
+        "vendor\/react\/filesystem\/src\/Eio\/StatTrait.php": "e4f55c00944b4794086a4b9c744bbb1c",
+        "vendor\/react\/filesystem\/src\/Eio\/Directory.php": "be1bc505a3b639e08311489a15bd0baf",
+        "vendor\/react\/filesystem\/src\/Eio\/Poll.php": "e7f35ee6938f932f06928150f5cee3ac",
+        "vendor\/react\/filesystem\/src\/Eio\/NotExist.php": "f987f813fe76fd12d3351857cbec95f1",
+        "vendor\/react\/filesystem\/src\/Eio\/Adapter.php": "7be12dc2e5c6d1a033da5dddf64d3c89",
+        "vendor\/react\/filesystem\/src\/Eio\/File.php": "6a4514e408881235727a21f12a48e1fd",
+        "vendor\/react\/filesystem\/src\/FlagResolverInterface.php": "fa6ce6f4995ddde8c09a78ec60b525f7",
+        "vendor\/react\/filesystem\/src\/AdapterInterface.php": "fa3348e83d4844775aa62f66b111e1a8",
+        "vendor\/react\/http\/src\/Server.php": "cb3725ce8a289b2f7771bc209836fdec",
+        "vendor\/react\/http\/src\/Middleware\/RequestBodyParserMiddleware.php": "5ac6639f3d4fa40d40cbc10351390f3b",
+        "vendor\/react\/http\/src\/Middleware\/RequestBodyBufferMiddleware.php": "df720f8790280dfbd24afb2074b28f68",
+        "vendor\/react\/http\/src\/Middleware\/LimitConcurrentRequestsMiddleware.php": "e498222e163c747d541e19459dfbe266",
+        "vendor\/react\/http\/src\/Middleware\/StreamingRequestMiddleware.php": "611a21620fd581b9660f5cb047e22ea5",
+        "vendor\/react\/http\/src\/Client\/Client.php": "cbeaeff6c19c7d419e124b4b57dee101",
+        "vendor\/react\/http\/src\/HttpServer.php": "7165a9e8bac533829cc40b3f89b236a7",
+        "vendor\/react\/http\/src\/Message\/Response.php": "d2550ebb2ba94269dc16c396403990b6",
+        "vendor\/react\/http\/src\/Message\/Uri.php": "579b411a511ce12c51afa2d60392eb32",
+        "vendor\/react\/http\/src\/Message\/Request.php": "903e998e0eb7d07c7272daadc9383c00",
+        "vendor\/react\/http\/src\/Message\/ServerRequest.php": "859083d235f7a32bcf0e9348e3937ec0",
+        "vendor\/react\/http\/src\/Browser.php": "a18161fa4b0f1d1b3e64b3417150d621",
+        "vendor\/react\/http\/src\/Io\/MultipartParser.php": "da76820a062f0dd116c4ed015b74c4ac",
+        "vendor\/react\/http\/src\/Io\/Transaction.php": "5fa78e38322e2482d99082b24a1c42cd",
+        "vendor\/react\/http\/src\/Io\/LengthLimitedStream.php": "d1e76135bc1be2fbbcde830b325cd329",
+        "vendor\/react\/http\/src\/Io\/BufferedBody.php": "bd2e1852225ee8b3336f2f2c314c9d2e",
+        "vendor\/react\/http\/src\/Io\/UploadedFile.php": "297774453621de60938937418cad819b",
+        "vendor\/react\/http\/src\/Io\/MiddlewareRunner.php": "898d6db5dda3354aaafcae3dbaf27df0",
+        "vendor\/react\/http\/src\/Io\/ChunkedEncoder.php": "ea7fab56fb55d61ecf20b391ec70b868",
+        "vendor\/react\/http\/src\/Io\/RequestHeaderParser.php": "e46b16748d42fa336b43522fca9a6ed0",
+        "vendor\/react\/http\/src\/Io\/PauseBufferStream.php": "76daebcdefef81f22641b4a08c067ea4",
+        "vendor\/react\/http\/src\/Io\/EmptyBodyStream.php": "a0200cb92d65433b5c1c01903edea023",
+        "vendor\/react\/http\/src\/Io\/AbstractRequest.php": "e1604340993c355a127c320862213275",
+        "vendor\/react\/http\/src\/Io\/HttpBodyStream.php": "7ab16f993cba43112d4487bc3a1d4278",
+        "vendor\/react\/http\/src\/Io\/StreamingServer.php": "7f1992affea7dd757a6ef446f3cb108c",
+        "vendor\/react\/http\/src\/Io\/ChunkedDecoder.php": "63b190d168921364b985deb0016ef46b",
+        "vendor\/react\/http\/src\/Io\/ClientRequestState.php": "f5a9e742816cff53ea3fc55a7a134815",
+        "vendor\/react\/http\/src\/Io\/AbstractMessage.php": "69706770b1919a1bf4e96b214f76fd1a",
+        "vendor\/react\/http\/src\/Io\/ReadableBodyStream.php": "13ce39071761a2abe45b88730db6e811",
+        "vendor\/react\/http\/src\/Io\/ClientConnectionManager.php": "e16c38909606306bcb760c142e92a035",
+        "vendor\/react\/http\/src\/Io\/CloseProtectionStream.php": "e2cd968158bbe3286f7f036b2a928a0b",
+        "vendor\/react\/http\/src\/Io\/IniUtil.php": "f6a0738cd7ddc1f791279298e78ceb67",
+        "vendor\/react\/http\/src\/Io\/Sender.php": "4f8f8e3957eea46ed4227a0bca92691d",
+        "vendor\/react\/http\/src\/Io\/Clock.php": "9e024d80876a1b35e844ee55c69bff0d",
+        "vendor\/react\/http\/src\/Io\/ClientRequestStream.php": "d7225a2acf5ce599ff8a5019d3d2d07c",
+        "vendor\/react\/socket\/src\/Server.php": "fd0c7f0e7b8605c3c8c5e86f716db31f",
+        "vendor\/react\/socket\/src\/SocketServer.php": "afdb44e3d5537887e61392eccfc69613",
+        "vendor\/react\/socket\/src\/HappyEyeBallsConnectionBuilder.php": "7874ec88e8f1fd84dc5fe5e5b1759b42",
+        "vendor\/react\/socket\/src\/LimitingServer.php": "4b4c286bb4daad9a51cb5be39e324181",
+        "vendor\/react\/socket\/src\/UnixConnector.php": "e3e6612703d7e213361cca8ffe1c2372",
+        "vendor\/react\/socket\/src\/SecureConnector.php": "786246a72108f51012fdbd4477dad01e",
+        "vendor\/react\/socket\/src\/ConnectionInterface.php": "cfb64abe68ac5667d15d03b4594569f7",
+        "vendor\/react\/socket\/src\/TimeoutConnector.php": "b2b417a792dfe6094e9761bdde6590c2",
+        "vendor\/react\/socket\/src\/FixedUriConnector.php": "92ffdd94b9dec76253ba65c4a43887e3",
+        "vendor\/react\/socket\/src\/TcpConnector.php": "eb6c77e494b543cf6acf0f7bedb76a88",
+        "vendor\/react\/socket\/src\/TcpServer.php": "5d224e1cc25a79a9a6e051585673dc11",
+        "vendor\/react\/socket\/src\/DnsConnector.php": "1ffc82bf2b77f6131926c55f09c5a27c",
+        "vendor\/react\/socket\/src\/UnixServer.php": "690e4a73a7ef8390ab8aec0a235221ba",
+        "vendor\/react\/socket\/src\/FdServer.php": "088d53ec1b9f77f190a368b6200807cd",
+        "vendor\/react\/socket\/src\/StreamEncryption.php": "7fd7a76612ab54970bb032137ab9f305",
+        "vendor\/react\/socket\/src\/SecureServer.php": "14d3cb6c2775097afbc233eb8a7b6973",
+        "vendor\/react\/socket\/src\/ServerInterface.php": "840dd08a060bda3cb1b5706d1ff4cd32",
+        "vendor\/react\/socket\/src\/ConnectorInterface.php": "03247fadd5e8fc0d6c258097dac4b957",
+        "vendor\/react\/socket\/src\/Connection.php": "91a369c406f0897be45c663f6b009e83",
+        "vendor\/react\/socket\/src\/Connector.php": "17a3a274a6bcdeb2b0abb7b6dad877ea",
+        "vendor\/react\/socket\/src\/HappyEyeBallsConnector.php": "57d97f6fb2c716e8c1615700cc09da4b",
+        "vendor\/wyrihaximus\/async-test-utilities\/src\/TimeOut.php": "5809fecd9c8e251aee1fdc3ef31847d0",
+        "vendor\/wyrihaximus\/react-phpunit-run-tests-in-fiber\/src\/TimeOut.php": "cd54879af830073385948378f85af0e9",
+        "vendor\/wyrihaximus\/react-phpunit-run-tests-in-fiber\/src\/TimeOutInterface.php": "cd30f9e73cecb3d890228e3e1597d461",
+        "vendor\/wyrihaximus\/react-phpunit-run-tests-in-fiber\/src\/RunTestsInFibersTrait.php": "6aaf45a024f3150601a1237e18ccceb7"
+    },
+    "classFilterOutcome": [],
+    "classFilePaths": {
+        "Mammatus\\OpenTelemetry\\Otlp": "src\/Otlp.php",
+        "Mammatus\\OpenTelemetry\\OtlpHttpTransportFactory": "src\/OtlpHttpTransportFactory.php",
+        "Mammatus\\OpenTelemetry\\PsrStreamFactory": "src\/PsrStreamFactory.php",
+        "Mammatus\\OpenTelemetry\\PsrTransport": "src\/PsrTransport.php",
+        "Mammatus\\OpenTelemetry\\Composer\\Item": "src\/Composer\/Item.php",
+        "Mammatus\\OpenTelemetry\\Composer\\MonkeyPatcher": "src\/Composer\/MonkeyPatcher.php",
+        "Mammatus\\OpenTelemetry\\Composer\\Plugin": "src\/Composer\/Plugin.php",
+        "Mammatus\\OpenTelemetry\\Composer\\ProjectRoot": "src\/Composer\/ProjectRoot.php",
+        "Mammatus\\OpenTelemetry\\Composer\\Collector": "src\/Composer\/Collector.php",
+        "Mammatus\\OpenTelemetry\\Fiber\\Factory": "src\/Fiber\/Factory.php",
+        "Mammatus\\OpenTelemetry\\Fiber\\Observer": "src\/Fiber\/Observer.php",
+        "OpenTelemetry\\Contrib\\Instrumentation\\ReactPHP\\HeadersPropagator": "vendor\/open-telemetry\/opentelemetry-auto-reactphp\/src\/HeadersPropagator.php",
+        "OpenTelemetry\\Contrib\\Instrumentation\\ReactPHP\\ReactPHPInstrumentation": "vendor\/open-telemetry\/opentelemetry-auto-reactphp\/src\/ReactPHPInstrumentation.php",
+        "React\\Dns\\Resolver\\Resolver": "vendor\/react\/dns\/src\/Resolver\/Resolver.php",
+        "React\\Dns\\Resolver\\Factory": "vendor\/react\/dns\/src\/Resolver\/Factory.php",
+        "React\\Dns\\Resolver\\ResolverInterface": "vendor\/react\/dns\/src\/Resolver\/ResolverInterface.php",
+        "React\\Dns\\Model\\Message": "vendor\/react\/dns\/src\/Model\/Message.php",
+        "React\\Dns\\Model\\Record": "vendor\/react\/dns\/src\/Model\/Record.php",
+        "React\\Dns\\Query\\UdpTransportExecutor": "vendor\/react\/dns\/src\/Query\/UdpTransportExecutor.php",
+        "React\\Dns\\Query\\HostsFileExecutor": "vendor\/react\/dns\/src\/Query\/HostsFileExecutor.php",
+        "React\\Dns\\Query\\Query": "vendor\/react\/dns\/src\/Query\/Query.php",
+        "React\\Dns\\Query\\CachingExecutor": "vendor\/react\/dns\/src\/Query\/CachingExecutor.php",
+        "React\\Dns\\Query\\ExecutorInterface": "vendor\/react\/dns\/src\/Query\/ExecutorInterface.php",
+        "React\\Dns\\Query\\FallbackExecutor": "vendor\/react\/dns\/src\/Query\/FallbackExecutor.php",
+        "React\\Dns\\Query\\CoopExecutor": "vendor\/react\/dns\/src\/Query\/CoopExecutor.php",
+        "React\\Dns\\Query\\TcpTransportExecutor": "vendor\/react\/dns\/src\/Query\/TcpTransportExecutor.php",
+        "React\\Dns\\Query\\RetryExecutor": "vendor\/react\/dns\/src\/Query\/RetryExecutor.php",
+        "React\\Dns\\Query\\TimeoutExecutor": "vendor\/react\/dns\/src\/Query\/TimeoutExecutor.php",
+        "React\\Dns\\Query\\SelectiveTransportExecutor": "vendor\/react\/dns\/src\/Query\/SelectiveTransportExecutor.php",
+        "React\\Dns\\Config\\HostsFile": "vendor\/react\/dns\/src\/Config\/HostsFile.php",
+        "React\\Dns\\Config\\Config": "vendor\/react\/dns\/src\/Config\/Config.php",
+        "React\\Dns\\Protocol\\Parser": "vendor\/react\/dns\/src\/Protocol\/Parser.php",
+        "React\\Dns\\Protocol\\BinaryDumper": "vendor\/react\/dns\/src\/Protocol\/BinaryDumper.php",
+        "React\\Filesystem\\PollInterface": "vendor\/react\/filesystem\/src\/PollInterface.php",
+        "React\\Filesystem\\Uv\\StatTrait": "vendor\/react\/filesystem\/src\/Uv\/StatTrait.php",
+        "React\\Filesystem\\Uv\\Directory": "vendor\/react\/filesystem\/src\/Uv\/Directory.php",
+        "React\\Filesystem\\Uv\\Poll": "vendor\/react\/filesystem\/src\/Uv\/Poll.php",
+        "React\\Filesystem\\Uv\\NotExist": "vendor\/react\/filesystem\/src\/Uv\/NotExist.php",
+        "React\\Filesystem\\Uv\\Adapter": "vendor\/react\/filesystem\/src\/Uv\/Adapter.php",
+        "React\\Filesystem\\Uv\\File": "vendor\/react\/filesystem\/src\/Uv\/File.php",
+        "React\\Filesystem\\Fallback\\StatTrait": "vendor\/react\/filesystem\/src\/Fallback\/StatTrait.php",
+        "React\\Filesystem\\Fallback\\Directory": "vendor\/react\/filesystem\/src\/Fallback\/Directory.php",
+        "React\\Filesystem\\Fallback\\NotExist": "vendor\/react\/filesystem\/src\/Fallback\/NotExist.php",
+        "React\\Filesystem\\Fallback\\Adapter": "vendor\/react\/filesystem\/src\/Fallback\/Adapter.php",
+        "React\\Filesystem\\Fallback\\File": "vendor\/react\/filesystem\/src\/Fallback\/File.php",
+        "React\\Filesystem\\FlagResolver": "vendor\/react\/filesystem\/src\/FlagResolver.php",
+        "React\\Filesystem\\Factory": "vendor\/react\/filesystem\/src\/Factory.php",
+        "React\\Filesystem\\ModeTypeDetector": "vendor\/react\/filesystem\/src\/ModeTypeDetector.php",
+        "React\\Filesystem\\TypeDetectorInterface": "vendor\/react\/filesystem\/src\/TypeDetectorInterface.php",
+        "React\\Filesystem\\Stat": "vendor\/react\/filesystem\/src\/Stat.php",
+        "React\\Filesystem\\Node\\NodeInterface": "vendor\/react\/filesystem\/src\/Node\/NodeInterface.php",
+        "React\\Filesystem\\Node\\DirectoryInterface": "vendor\/react\/filesystem\/src\/Node\/DirectoryInterface.php",
+        "React\\Filesystem\\Node\\NotExistInterface": "vendor\/react\/filesystem\/src\/Node\/NotExistInterface.php",
+        "React\\Filesystem\\Node\\FileInterface": "vendor\/react\/filesystem\/src\/Node\/FileInterface.php",
+        "React\\Filesystem\\Eio\\EventStream": "vendor\/react\/filesystem\/src\/Eio\/EventStream.php",
+        "React\\Filesystem\\Eio\\StatTrait": "vendor\/react\/filesystem\/src\/Eio\/StatTrait.php",
+        "React\\Filesystem\\Eio\\Directory": "vendor\/react\/filesystem\/src\/Eio\/Directory.php",
+        "React\\Filesystem\\Eio\\Poll": "vendor\/react\/filesystem\/src\/Eio\/Poll.php",
+        "React\\Filesystem\\Eio\\NotExist": "vendor\/react\/filesystem\/src\/Eio\/NotExist.php",
+        "React\\Filesystem\\Eio\\Adapter": "vendor\/react\/filesystem\/src\/Eio\/Adapter.php",
+        "React\\Filesystem\\Eio\\File": "vendor\/react\/filesystem\/src\/Eio\/File.php",
+        "React\\Filesystem\\FlagResolverInterface": "vendor\/react\/filesystem\/src\/FlagResolverInterface.php",
+        "React\\Filesystem\\AdapterInterface": "vendor\/react\/filesystem\/src\/AdapterInterface.php",
+        "React\\Http\\Server": "vendor\/react\/http\/src\/Server.php",
+        "React\\Http\\Middleware\\RequestBodyParserMiddleware": "vendor\/react\/http\/src\/Middleware\/RequestBodyParserMiddleware.php",
+        "React\\Http\\Middleware\\RequestBodyBufferMiddleware": "vendor\/react\/http\/src\/Middleware\/RequestBodyBufferMiddleware.php",
+        "React\\Http\\Middleware\\LimitConcurrentRequestsMiddleware": "vendor\/react\/http\/src\/Middleware\/LimitConcurrentRequestsMiddleware.php",
+        "React\\Http\\Middleware\\StreamingRequestMiddleware": "vendor\/react\/http\/src\/Middleware\/StreamingRequestMiddleware.php",
+        "React\\Http\\Client\\Client": "vendor\/react\/http\/src\/Client\/Client.php",
+        "React\\Http\\HttpServer": "vendor\/react\/http\/src\/HttpServer.php",
+        "React\\Http\\Message\\Response": "vendor\/react\/http\/src\/Message\/Response.php",
+        "React\\Http\\Message\\Uri": "vendor\/react\/http\/src\/Message\/Uri.php",
+        "React\\Http\\Message\\Request": "vendor\/react\/http\/src\/Message\/Request.php",
+        "React\\Http\\Message\\ServerRequest": "vendor\/react\/http\/src\/Message\/ServerRequest.php",
+        "React\\Http\\Browser": "vendor\/react\/http\/src\/Browser.php",
+        "React\\Http\\Io\\MultipartParser": "vendor\/react\/http\/src\/Io\/MultipartParser.php",
+        "React\\Http\\Io\\Transaction": "vendor\/react\/http\/src\/Io\/Transaction.php",
+        "React\\Http\\Io\\LengthLimitedStream": "vendor\/react\/http\/src\/Io\/LengthLimitedStream.php",
+        "React\\Http\\Io\\BufferedBody": "vendor\/react\/http\/src\/Io\/BufferedBody.php",
+        "React\\Http\\Io\\UploadedFile": "vendor\/react\/http\/src\/Io\/UploadedFile.php",
+        "React\\Http\\Io\\MiddlewareRunner": "vendor\/react\/http\/src\/Io\/MiddlewareRunner.php",
+        "React\\Http\\Io\\ChunkedEncoder": "vendor\/react\/http\/src\/Io\/ChunkedEncoder.php",
+        "React\\Http\\Io\\RequestHeaderParser": "vendor\/react\/http\/src\/Io\/RequestHeaderParser.php",
+        "React\\Http\\Io\\PauseBufferStream": "vendor\/react\/http\/src\/Io\/PauseBufferStream.php",
+        "React\\Http\\Io\\EmptyBodyStream": "vendor\/react\/http\/src\/Io\/EmptyBodyStream.php",
+        "React\\Http\\Io\\AbstractRequest": "vendor\/react\/http\/src\/Io\/AbstractRequest.php",
+        "React\\Http\\Io\\HttpBodyStream": "vendor\/react\/http\/src\/Io\/HttpBodyStream.php",
+        "React\\Http\\Io\\StreamingServer": "vendor\/react\/http\/src\/Io\/StreamingServer.php",
+        "React\\Http\\Io\\ChunkedDecoder": "vendor\/react\/http\/src\/Io\/ChunkedDecoder.php",
+        "React\\Http\\Io\\ClientRequestState": "vendor\/react\/http\/src\/Io\/ClientRequestState.php",
+        "React\\Http\\Io\\AbstractMessage": "vendor\/react\/http\/src\/Io\/AbstractMessage.php",
+        "React\\Http\\Io\\ReadableBodyStream": "vendor\/react\/http\/src\/Io\/ReadableBodyStream.php",
+        "React\\Http\\Io\\ClientConnectionManager": "vendor\/react\/http\/src\/Io\/ClientConnectionManager.php",
+        "React\\Http\\Io\\CloseProtectionStream": "vendor\/react\/http\/src\/Io\/CloseProtectionStream.php",
+        "React\\Http\\Io\\IniUtil": "vendor\/react\/http\/src\/Io\/IniUtil.php",
+        "React\\Http\\Io\\Sender": "vendor\/react\/http\/src\/Io\/Sender.php",
+        "React\\Http\\Io\\Clock": "vendor\/react\/http\/src\/Io\/Clock.php",
+        "React\\Http\\Io\\ClientRequestStream": "vendor\/react\/http\/src\/Io\/ClientRequestStream.php",
+        "React\\Socket\\Server": "vendor\/react\/socket\/src\/Server.php",
+        "React\\Socket\\SocketServer": "vendor\/react\/socket\/src\/SocketServer.php",
+        "React\\Socket\\HappyEyeBallsConnectionBuilder": "vendor\/react\/socket\/src\/HappyEyeBallsConnectionBuilder.php",
+        "React\\Socket\\LimitingServer": "vendor\/react\/socket\/src\/LimitingServer.php",
+        "React\\Socket\\UnixConnector": "vendor\/react\/socket\/src\/UnixConnector.php",
+        "React\\Socket\\SecureConnector": "vendor\/react\/socket\/src\/SecureConnector.php",
+        "React\\Socket\\ConnectionInterface": "vendor\/react\/socket\/src\/ConnectionInterface.php",
+        "React\\Socket\\TimeoutConnector": "vendor\/react\/socket\/src\/TimeoutConnector.php",
+        "React\\Socket\\FixedUriConnector": "vendor\/react\/socket\/src\/FixedUriConnector.php",
+        "React\\Socket\\TcpConnector": "vendor\/react\/socket\/src\/TcpConnector.php",
+        "React\\Socket\\TcpServer": "vendor\/react\/socket\/src\/TcpServer.php",
+        "React\\Socket\\DnsConnector": "vendor\/react\/socket\/src\/DnsConnector.php",
+        "React\\Socket\\UnixServer": "vendor\/react\/socket\/src\/UnixServer.php",
+        "React\\Socket\\FdServer": "vendor\/react\/socket\/src\/FdServer.php",
+        "React\\Socket\\StreamEncryption": "vendor\/react\/socket\/src\/StreamEncryption.php",
+        "React\\Socket\\SecureServer": "vendor\/react\/socket\/src\/SecureServer.php",
+        "React\\Socket\\ServerInterface": "vendor\/react\/socket\/src\/ServerInterface.php",
+        "React\\Socket\\ConnectorInterface": "vendor\/react\/socket\/src\/ConnectorInterface.php",
+        "React\\Socket\\Connection": "vendor\/react\/socket\/src\/Connection.php",
+        "React\\Socket\\Connector": "vendor\/react\/socket\/src\/Connector.php",
+        "React\\Socket\\HappyEyeBallsConnector": "vendor\/react\/socket\/src\/HappyEyeBallsConnector.php",
+        "WyriHaximus\\AsyncTestUtilities\\TimeOut": "vendor\/wyrihaximus\/async-test-utilities\/src\/TimeOut.php",
+        "WyriHaximus\\React\\PHPUnit\\TimeOut": "vendor\/wyrihaximus\/react-phpunit-run-tests-in-fiber\/src\/TimeOut.php",
+        "WyriHaximus\\React\\PHPUnit\\TimeOutInterface": "vendor\/wyrihaximus\/react-phpunit-run-tests-in-fiber\/src\/TimeOutInterface.php",
+        "WyriHaximus\\React\\PHPUnit\\RunTestsInFibersTrait": "vendor\/wyrihaximus\/react-phpunit-run-tests-in-fiber\/src\/RunTestsInFibersTrait.php"
+    },
+    "failedReflections": [
+        "Psr\\Http\\Client\\ClientInterface@anonymous\u0000\/home\/wyrihaximus\/Projects\/MammatusPHP\/open-telemetry\/src\/OtlpHttpTransportFactory.php(47)",
+        "React\\Dns\\RecordNotFoundException",
+        "React\\Dns\\Query\\CancellationException",
+        "React\\Dns\\Query\\TimeoutException",
+        "React\\Dns\\BadServerException",
+        "React\\Filesystem\\NodeNotFound",
+        "React\\Http\\Message\\ResponseException",
+        "WyriHaximus\\AsyncTestUtilities\\AsyncTestCase",
+        "WyriHaximus\\React\\PHPUnit\\TimedOut"
+    ],
+    "collectedItems": {
+        "mammatus\/open-telemetry": {
+            "Mammatus\\OpenTelemetry\\Otlp": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "Mammatus\\OpenTelemetry\\OtlpHttpTransportFactory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjMyOiJzcmMvT3RscEh0dHBUcmFuc3BvcnRGYWN0b3J5LnBocCI7fQ=="
+                ]
+            },
+            "Mammatus\\OpenTelemetry\\PsrStreamFactory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjI0OiJzcmMvUHNyU3RyZWFtRmFjdG9yeS5waHAiO30="
+                ]
+            },
+            "Mammatus\\OpenTelemetry\\PsrTransport": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjIwOiJzcmMvUHNyVHJhbnNwb3J0LnBocCI7fQ=="
+                ]
+            },
+            "Mammatus\\OpenTelemetry\\Composer\\Item": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "Mammatus\\OpenTelemetry\\Composer\\MonkeyPatcher": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "Mammatus\\OpenTelemetry\\Composer\\Plugin": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjIzOiJzcmMvQ29tcG9zZXIvUGx1Z2luLnBocCI7fQ=="
+                ]
+            },
+            "Mammatus\\OpenTelemetry\\Composer\\ProjectRoot": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "Mammatus\\OpenTelemetry\\Composer\\Collector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjI2OiJzcmMvQ29tcG9zZXIvQ29sbGVjdG9yLnBocCI7fQ=="
+                ]
+            },
+            "Mammatus\\OpenTelemetry\\Fiber\\Factory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjIxOiJzcmMvRmliZXIvRmFjdG9yeS5waHAiO30="
+                ]
+            },
+            "Mammatus\\OpenTelemetry\\Fiber\\Observer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjIyOiJzcmMvRmliZXIvT2JzZXJ2ZXIucGhwIjt9"
+                ]
+            },
+            "OpenTelemetry\\Contrib\\Instrumentation\\ReactPHP\\HeadersPropagator": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "OpenTelemetry\\Contrib\\Instrumentation\\ReactPHP\\ReactPHPInstrumentation": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Resolver\\Resolver": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Resolver\\Factory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Resolver\\ResolverInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Model\\Message": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Model\\Record": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\UdpTransportExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\HostsFileExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\Query": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\CachingExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\ExecutorInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\FallbackExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\CoopExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\TcpTransportExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\RetryExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\TimeoutExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Query\\SelectiveTransportExecutor": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Config\\HostsFile": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Config\\Config": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Protocol\\Parser": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Dns\\Protocol\\BinaryDumper": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\PollInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Uv\\StatTrait": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Uv\\Directory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Uv\\Poll": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Uv\\NotExist": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Uv\\Adapter": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Uv\\File": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Fallback\\StatTrait": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Fallback\\Directory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Fallback\\NotExist": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Fallback\\Adapter": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Fallback\\File": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\FlagResolver": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Factory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\ModeTypeDetector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\TypeDetectorInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Stat": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Node\\NodeInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Node\\DirectoryInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Node\\NotExistInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Node\\FileInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\EventStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\StatTrait": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\Directory": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\Poll": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\NotExist": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\Adapter": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\Eio\\File": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\FlagResolverInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Filesystem\\AdapterInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Server": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Middleware\\RequestBodyParserMiddleware": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Middleware\\RequestBodyBufferMiddleware": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Middleware\\LimitConcurrentRequestsMiddleware": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Middleware\\StreamingRequestMiddleware": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Client\\Client": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\HttpServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Message\\Response": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Message\\Uri": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Message\\Request": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Message\\ServerRequest": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Browser": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\MultipartParser": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\Transaction": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\LengthLimitedStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\BufferedBody": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\UploadedFile": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\MiddlewareRunner": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\ChunkedEncoder": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\RequestHeaderParser": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\PauseBufferStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\EmptyBodyStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\AbstractRequest": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\HttpBodyStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\StreamingServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\ChunkedDecoder": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\ClientRequestState": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\AbstractMessage": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\ReadableBodyStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\ClientConnectionManager": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\CloseProtectionStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\IniUtil": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\Sender": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\Clock": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Http\\Io\\ClientRequestStream": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\Server": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\SocketServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\HappyEyeBallsConnectionBuilder": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\LimitingServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\UnixConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\SecureConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\ConnectionInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\TimeoutConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\FixedUriConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\TcpConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\TcpServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\DnsConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\UnixServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\FdServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\StreamEncryption": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\SecureServer": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\ServerInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\ConnectorInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\Connection": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\Connector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "React\\Socket\\HappyEyeBallsConnector": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "WyriHaximus\\AsyncTestUtilities\\TimeOut": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "WyriHaximus\\React\\PHPUnit\\TimeOut": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "WyriHaximus\\React\\PHPUnit\\TimeOutInterface": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": []
+            },
+            "WyriHaximus\\React\\PHPUnit\\RunTestsInFibersTrait": {
+                "Mammatus\\OpenTelemetry\\Composer\\Collector": [
+                    "TzozNjoiTWFtbWF0dXNcT3BlblRlbGVtZXRyeVxDb21wb3NlclxJdGVtIjoxOntzOjg6ImZpbGVOYW1lIjtzOjgxOiJ2ZW5kb3Ivd3lyaWhheGltdXMvcmVhY3QtcGhwdW5pdC1ydW4tdGVzdHMtaW4tZmliZXIvc3JjL1J1blRlc3RzSW5GaWJlcnNUcmFpdC5waHAiO30="
+                ]
+            }
+        }
+    }
+}
