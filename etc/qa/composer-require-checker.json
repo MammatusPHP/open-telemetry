@@ -10,7 +10,10 @@
     "Composer\\Composer", "Composer\\Config", "Composer\\EventDispatcher\\EventSubscriberInterface",
     "Composer\\IO\\IOInterface", "Composer\\Package\\RootPackageInterface", "Composer\\Plugin\\PluginInterface",
     "Composer\\Script\\Event", "Composer\\Script\\ScriptEvents", "JetBrains\\PHPStormStub\\PhpStormStubsMap",
-    "Psr\\Container\\ContainerInterface"
+    "Psr\\Container\\ContainerInterface", "async",
+    "Mammatus\\OpenTelemetry\\MAIN_CONTEXT_KEY",
+    "MAIN_CONTEXT_KEY",
+    "OpenTelemetry\\Instrumentation\\hook"
   ],
   "php-core-extensions" : [
     "Core",
