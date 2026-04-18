@@ -30,8 +30,6 @@ use React\EventLoop\TimerInterface;
 use React\Http\Browser;
 use WyriHaximus\Broadcast\Contracts\AsyncListener;
 
-use function React\Async\async;
-
 final class Otlp implements AsyncListener
 {
     private readonly LoggerProviderInterface $loggerProvider;
