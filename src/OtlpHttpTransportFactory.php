@@ -31,6 +31,7 @@ final readonly class OtlpHttpTransportFactory implements TransportFactoryInterfa
         string $endpoint,
         string $contentType,
         array $headers = [],
+        /** @phpstan-ignore typeCoverage.paramTypeCoverage */
         $compression = null,
         float $timeout = 10.,
         int $retryDelay = 100,

@@ -33,7 +33,11 @@ final readonly class PsrStreamFactory implements StreamFactoryInterface
         return new ReadOnlyStringStream(await($this->filesystem->file($filename)->getContents()));
     }
 
-    /** @param resource $resource */
+    /**
+     * @param resource $resource
+     *
+     * @phpstan-ignore typeCoverage.paramTypeCoverage
+     */
     public function createStreamFromResource($resource): StreamInterface
     {
         return new ReadOnlyStringStream(await(buffer(new ReadableResourceStream($resource))));
