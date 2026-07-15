@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf0ffee5b9473c0e89b539908af8c79b",
+    "content-hash": "ba7fdde42ff1ecd35886e432aac5500d",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -920,16 +920,16 @@
         },
         {
             "name": "open-telemetry/opentelemetry-auto-psr14",
-            "version": "0.0.6",
+            "version": "0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/contrib-auto-psr14.git",
-                "reference": "811e8dcbbc370b8bf1555c1b49833a5e5d8e84eb"
+                "reference": "86e7e41e69308c1261eb23c4b8b52157ac400c9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-psr14/zipball/811e8dcbbc370b8bf1555c1b49833a5e5d8e84eb",
-                "reference": "811e8dcbbc370b8bf1555c1b49833a5e5d8e84eb",
+                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-psr14/zipball/86e7e41e69308c1261eb23c4b8b52157ac400c9b",
+                "reference": "86e7e41e69308c1261eb23c4b8b52157ac400c9b",
                 "shasum": ""
             },
             "require": {
@@ -977,9 +977,9 @@
                 "tracing"
             ],
             "support": {
-                "source": "https://github.com/opentelemetry-php/contrib-auto-psr14/tree/0.0.6"
+                "source": "https://github.com/opentelemetry-php/contrib-auto-psr14/tree/0.0.7"
             },
-            "time": "2026-03-24T16:33:16+00:00"
+            "time": "2026-06-08T12:54:17+00:00"
         },
         {
             "name": "open-telemetry/opentelemetry-auto-psr15",
