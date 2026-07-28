@@ -109,9 +109,9 @@ final class PsrTransport implements TransportInterface
 
             try {
                 await(sleep($delay));
-            } catch (Throwable $e) {
+            } catch (Throwable $e) { // @codeCoverageIgnoreStart
                 return new ErrorFuture(new RuntimeException('Export cancelled', 0, $e));
-            }
+            } // @codeCoverageIgnoreEnd
         }
 
         /** @phpstan-ignore ergebnis.noIsset */

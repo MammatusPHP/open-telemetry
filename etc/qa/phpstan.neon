@@ -14,8 +14,6 @@ parameters:
 		-
 			identifier: missingType.iterableValue
 			path: ../../src/PsrTransport.php
-
-#	ergebnis:
-#		noExtends:
-#			classesAllowedToBeExtended:
-#				- Psr\Log\AbstractLogger
+		-
+			message: '#.*blocks the event loop.*#'
+			path: ../../tests/**
