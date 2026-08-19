@@ -32,4 +32,19 @@ final class OtlpHttpTransportFactoryTest extends AsyncTestCase
         $ohtf = new OtlpHttpTransportFactory($browser)->create('https://example.com/v1/otlp', 'application/json+protobuf');
         $ohtf->send('abc')->await();
     }
+
+    #[Test]
+    public function createWithNoneCompression(): void
+    {
+        $browser = Mockery::mock(Browser::class);
+        $browser->shouldReceive('request')->once()->andReturn(resolve(new Response()));
+
+        $transport = new OtlpHttpTransportFactory($browser)->create(
+            'https://example.com/v1/otlp',
+            'application/json+protobuf',
+            compression: 'none',
+        );
+
+        $transport->send('abc')->await();
+    }
 }
