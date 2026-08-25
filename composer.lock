@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69afb2100c1709da068a87daef21bf91",
+    "content-hash": "50c0179dedadcf21acdab43f0bf69f06",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -12512,16 +12512,16 @@
         },
         {
             "name": "wyrihaximus/makefiles",
-            "version": "0.14.3",
+            "version": "0.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/Makefiles.git",
-                "reference": "8b5a575a787ef062946e79cf8954242ed300c4ec"
+                "reference": "3d520ca6df09c53239135df32fb7385f9e0b28bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/8b5a575a787ef062946e79cf8954242ed300c4ec",
-                "reference": "8b5a575a787ef062946e79cf8954242ed300c4ec",
+                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/3d520ca6df09c53239135df32fb7385f9e0b28bc",
+                "reference": "3d520ca6df09c53239135df32fb7385f9e0b28bc",
                 "shasum": ""
             },
             "require": {
@@ -12562,7 +12562,7 @@
             "description": "🧱 Makefile building blocks",
             "support": {
                 "issues": "https://github.com/WyriHaximus/Makefiles/issues",
-                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.14.3"
+                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.14.4"
             },
             "funding": [
                 {
@@ -12570,7 +12570,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-23T21:22:48+00:00"
+            "time": "2026-08-25T21:30:21+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-no-safe",
