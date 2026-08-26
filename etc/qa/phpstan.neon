@@ -12,10 +12,29 @@ parameters:
 			identifier: ergebnis.noParameterWithNullableTypeDeclaration
 			path: ../../src/OtlpHttpTransportFactory.php
 		-
+			identifier: ergebnis.noConstructorParameterWithDefaultValue
+			path: ../../src/OtlpHttpTransportFactory.php
+		-
+			identifier: ergebnis.noConstructorParameterWithDefaultValue
+			path: ../../src/StreamTransportFactory.php
+		-
+			identifier: ergebnis.noParameterWithNullDefaultValue
+			path: ../../src/StreamTransportFactory.php
+		-
+			identifier: ergebnis.noParameterWithNullableTypeDeclaration
+			path: ../../src/StreamTransportFactory.php
+		-
+			identifier: ergebnis.noParameterWithNullableTypeDeclaration
+			path: ../../src/Composer/Item.php
+		-
 			identifier: missingType.iterableValue
 			path: ../../src/PsrTransport.php
-
-#	ergebnis:
-#		noExtends:
-#			classesAllowedToBeExtended:
-#				- Psr\Log\AbstractLogger
+		-
+			identifier: staticMethod.internal
+			path: ../../tests/WithSpan/HooksTest.php
+		-
+			identifier: staticMethod.internal
+			path: ../../tests/WithInMemoryTracer.php
+		-
+			message: '#.*blocks the event loop.*#'
+			path: ../../tests/**
