@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "712174fdedf3b1874df027ae52de644c",
+    "content-hash": "23d836756d70c21a0cf16f4310466081",
     "packages": [
         {
             "name": "ancarda/psr7-string-stream",
@@ -1045,30 +1045,30 @@
         },
         {
             "name": "open-telemetry/opentelemetry-auto-psr16",
-            "version": "0.0.7",
+            "version": "0.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/contrib-auto-psr16.git",
-                "reference": "9f6e6129718c0d2db7f2bb9068de3f6a22a98fab"
+                "reference": "f971364daff4467a53ccc78a80939aa035a7215f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-psr16/zipball/9f6e6129718c0d2db7f2bb9068de3f6a22a98fab",
-                "reference": "9f6e6129718c0d2db7f2bb9068de3f6a22a98fab",
+                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-psr16/zipball/f971364daff4467a53ccc78a80939aa035a7215f",
+                "reference": "f971364daff4467a53ccc78a80939aa035a7215f",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
                 "ext-opentelemetry": "*",
                 "open-telemetry/api": "^1.0",
-                "open-telemetry/sem-conv": "^1.32",
+                "open-telemetry/sem-conv": "^1.36",
                 "php": "^8.1",
                 "psr/simple-cache": "^1 || ^2 || ^3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3",
                 "open-telemetry/sdk": "^1.0",
-                "phan/phan": "^5.0",
+                "phan/phan": "^6.0",
                 "phpstan/phpstan": "^1.1",
                 "phpstan/phpstan-mockery": "^1.1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
@@ -1100,9 +1100,9 @@
                 "tracing"
             ],
             "support": {
-                "source": "https://github.com/opentelemetry-php/contrib-auto-psr16/tree/0.0.7"
+                "source": "https://github.com/opentelemetry-php/contrib-auto-psr16/tree/0.0.8"
             },
-            "time": "2026-06-08T12:54:17+00:00"
+            "time": "2026-09-02T12:13:51+00:00"
         },
         {
             "name": "open-telemetry/opentelemetry-auto-psr18",
