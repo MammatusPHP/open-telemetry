@@ -11,4 +11,4 @@ permissions:
 jobs:
   ci:
     name: Utils
-    uses: WyriHaximus/github-workflows/.github/workflows/package-utils.yaml@main
+    uses: WyriHaximus/github-workflows/.github/workflows/package-utils.yaml@4669e1c809880ce23cfce71a2c489e37b758011a # main
