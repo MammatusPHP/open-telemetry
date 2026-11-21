@@ -25,6 +25,7 @@ use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use function gzencode;
 use function React\Async\async;
 use function React\Async\await;
+use function React\Promise\Timer\sleep;
 
 final class PsrTransportTest extends AsyncTestCase
 {
@@ -81,6 +82,44 @@ final class PsrTransportTest extends AsyncTestCase
     {
         $transport = $this->createTransport(Mockery::mock(ClientInterface::class));
         $transport->shutdown();
+
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessageIsOrContains('Transport closed');
+
+        $transport->send('payload')->await();
+    }
+
+    #[Test]
+    public function shutdownModeKeepsAcceptingUntilDelayElapses(): void
+    {
+        $client = Mockery::mock(ClientInterface::class);
+        $client->shouldReceive('sendRequest')->once()->andReturn(new Response(200, [], 'ok'));
+
+        $transport = $this->createTransport($client, stopAcceptingDelay: 0.05);
+        $transport->enterShutdownMode();
+        $transport->enterShutdownMode();
+
+        self::assertTrue($transport->shutdown());
+        self::assertFalse($transport->shutdown());
+        self::assertTrue($transport->forceFlush());
+        self::assertSame('ok', $transport->send('payload')->await());
+
+        await(sleep(0.06));
+
+        self::assertFalse($transport->forceFlush());
+
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessageIsOrContains('Transport closed');
+
+        $transport->send('payload')->await();
+    }
+
+    #[Test]
+    public function enterShutdownModeAfterCloseIsIgnored(): void
+    {
+        $transport = $this->createTransport(Mockery::mock(ClientInterface::class));
+        $transport->shutdown();
+        $transport->enterShutdownMode();
 
         $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessageIsOrContains('Transport closed');
@@ -216,6 +255,7 @@ final class PsrTransportTest extends AsyncTestCase
         array $compression = [],
         int $retryDelay = 100,
         int $maxRetries = 3,
+        float $stopAcceptingDelay = 6.0,
     ): PsrTransport {
         return new PsrTransport(
             $client,
@@ -227,6 +267,7 @@ final class PsrTransportTest extends AsyncTestCase
             $compression,
             $retryDelay,
             $maxRetries,
+            $stopAcceptingDelay,
         );
     }
 }
