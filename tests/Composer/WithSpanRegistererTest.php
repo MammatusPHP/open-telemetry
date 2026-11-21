@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mammatus\Tests\OpenTelemetry\Composer;
 
 use Mammatus\OpenTelemetry\Composer\Item;
+use Mammatus\OpenTelemetry\Composer\WithSpanItem;
 use Mammatus\OpenTelemetry\Composer\WithSpanRegisterer;
 use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\Test;
@@ -31,7 +32,7 @@ final class WithSpanRegistererTest extends AsyncTestCase
         new WithSpanRegisterer()->compile(
             $this->projectRoot,
             GenerativePluginProject::nonItem(),
-            Item::forFileName('src/Target.php'),
+            new Item('vendor/react/async/src/functions.php', false),
         );
 
         self::assertFileDoesNotExist($this->projectRoot . 'src/WithSpan/Registrar.php');
@@ -55,11 +56,11 @@ final class WithSpanRegistererTest extends AsyncTestCase
         new WithSpanRegisterer()->compile(
             $this->projectRoot,
             /** @phpstan-ignore argument.type */
-            Item::forClass('Acme\\Greeter'),
+            new WithSpanItem('Acme\\Greeter'),
             /** @phpstan-ignore argument.type */
-            Item::forClass('Acme\\Greeter'),
+            new WithSpanItem('Acme\\Greeter'),
             /** @phpstan-ignore argument.type */
-            Item::forClass('Acme\\Other'),
+            new WithSpanItem('Acme\\Other'),
         );
 
         $contents = file_get_contents($this->projectRoot . 'src/WithSpan/Registrar.php');

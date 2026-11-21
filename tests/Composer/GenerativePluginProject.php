@@ -13,8 +13,6 @@ use function mkdir;
 
 final class GenerativePluginProject
 {
-    public const string REACT_ASYNC_SOURCE = '<?php use function React\Async\async; async(static function (): void {});';
-
     public static function create(string $tmpDir): string
     {
         mkdir($tmpDir . 'vendor/composer', recursive: true);

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Tests\OpenTelemetry\Composer;
 
-use Mammatus\OpenTelemetry\Composer\Item;
 use Mammatus\OpenTelemetry\Composer\WithSpanCollector;
+use Mammatus\OpenTelemetry\Composer\WithSpanItem;
 use Mammatus\Tests\OpenTelemetry\WithSpan\Fixture\ChildGreeter;
 use Mammatus\Tests\OpenTelemetry\WithSpan\Fixture\Greeter;
 use Mammatus\Tests\OpenTelemetry\WithSpan\Fixture\WithoutSpanOnly;
@@ -25,7 +25,7 @@ final class WithSpanCollectorTest extends AsyncTestCase
         $items      = iterator_to_array(new WithSpanCollector()->collect($reflection), false);
 
         self::assertCount(1, $items);
-        self::assertInstanceOf(Item::class, $items[0]);
+        self::assertInstanceOf(WithSpanItem::class, $items[0]);
         self::assertSame(Greeter::class, $items[0]->class);
         self::assertContainsOnlyInstancesOf(ItemContract::class, $items);
     }

@@ -31,9 +31,9 @@ final class WithSpanCollector implements ItemCollector
                 continue;
             }
 
-            yield Item::forClass($class->getName());
+            yield new WithSpanItem($class->getName());
 
-            return;
+            break;
         }
     }
 }

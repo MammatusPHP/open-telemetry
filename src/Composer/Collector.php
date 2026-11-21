@@ -8,6 +8,8 @@ use Roave\BetterReflection\Reflection\ReflectionClass;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\ItemCollector;
 
+use function dirname;
+use function file_exists;
 use function file_get_contents;
 use function str_contains;
 
@@ -16,19 +18,27 @@ final class Collector implements ItemCollector
     /** @return iterable<ItemContract> */
     public function collect(ReflectionClass $class): iterable
     {
-        yield from [];
-
         $fileName = $class->getFileName();
-        if ($fileName === null) { // @codeCoverageIgnoreStart
+        if ($fileName === null) {
             return;
-        } // @codeCoverageIgnoreEnd
+        }
+
+        $functionsFile = dirname($fileName) . '/functions.php';
+        /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileExists */
+        if (! file_exists($functionsFile)) {
+            return;
+        }
 
         /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileGetContents */
-        $fileContents = file_get_contents($fileName);
-        if ($fileContents === false || ! str_contains($fileContents, 'React\Async')) { // @codeCoverageIgnoreStart
+        $contents = file_get_contents($functionsFile);
+        if ($contents === false) {
+            // @codeCoverageIgnoreStart
             return;
-        } // @codeCoverageIgnoreEnd
+            // @codeCoverageIgnoreEnd
+        }
 
-        yield Item::forFileName(ProjectRoot::relativePath($fileName));
+        $alreadyPatched = str_contains($contents, 'async_original');
+
+        yield new Item($functionsFile, $alreadyPatched);
     }
 }

@@ -6,15 +6,14 @@ namespace Mammatus\Tests\OpenTelemetry\Composer;
 
 use Mammatus\OpenTelemetry\Composer\Item;
 use Mammatus\OpenTelemetry\Composer\MonkeyPatcher;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Mammatus\OpenTelemetry\Composer\WithSpanItem;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
+use stdClass;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 
-use function dirname;
 use function file_get_contents;
 use function file_put_contents;
-use function is_dir;
 use function mkdir;
 
 final class MonkeyPatcherTest extends AsyncTestCase
@@ -23,55 +22,64 @@ final class MonkeyPatcherTest extends AsyncTestCase
 
     #[Test]
     #[DoesNotPerformAssertions]
+    public function compileSkipsWhenNoItems(): void
+    {
+        new MonkeyPatcher()->compile($this->projectRoot);
+    }
+
+    #[Test]
+    #[DoesNotPerformAssertions]
     public function compileSkipsNonItems(): void
     {
-        new MonkeyPatcher()->compile($this->projectRoot, GenerativePluginProject::nonItem());
+        new MonkeyPatcher()->compile($this->projectRoot, new WithSpanItem(stdClass::class));
     }
 
     #[Test]
     #[DoesNotPerformAssertions]
     public function compileSkipsWhenFileCannotBeRead(): void
     {
-        new MonkeyPatcher()->compile($this->projectRoot, Item::forFileName('src/does-not-exist.php'));
+        new MonkeyPatcher()->compile(
+            $this->projectRoot,
+            new Item('/nonexistent/path/functions.php', false),
+        );
     }
 
     #[Test]
-    public function compileMonkeyPatchesReactAsyncReferences(): void
+    public function compileSkipsAlreadyPatched(): void
     {
-        $relativePath = 'src/Target.php';
-        $absolutePath = $this->projectRoot . $relativePath;
-        file_put_contents($absolutePath, GenerativePluginProject::REACT_ASYNC_SOURCE);
+        mkdir($this->projectRoot . 'vendor/react/async/src', recursive: true);
+        file_put_contents(
+            $this->projectRoot . 'vendor/react/async/src/functions.php',
+            '<?php namespace React\Async; function async_original(callable $function): callable { return $function; }',
+        );
 
-        new MonkeyPatcher()->compile($this->projectRoot, Item::forFileName($relativePath));
+        new MonkeyPatcher()->compile(
+            $this->projectRoot,
+            new Item($this->projectRoot . 'vendor/react/async/src/functions.php', true),
+        );
 
-        $contents = file_get_contents($absolutePath);
+        $contents = file_get_contents($this->projectRoot . 'vendor/react/async/src/functions.php');
         self::assertIsString($contents);
-        self::assertStringContainsString('Mammatus\OpenTelemetry\async', $contents);
-        self::assertStringNotContainsString('React\Async\async', $contents);
+        self::assertStringNotContainsString('\\Mammatus\\OpenTelemetry\\async', $contents);
     }
 
     #[Test]
-    #[DataProvider('provideSkippedRelativePaths')]
-    public function compileSkipsProtectedRelativePaths(string $relativePath): void
+    public function compileMonkeyPatchesReactAsyncFunctionsFile(): void
     {
-        $absolutePath = $this->projectRoot . $relativePath;
-        $parentPath   = dirname($absolutePath);
-        if (! is_dir($parentPath)) {
-            mkdir($parentPath, recursive: true);
-        }
+        mkdir($this->projectRoot . 'vendor/react/async/src', recursive: true);
+        file_put_contents(
+            $this->projectRoot . 'vendor/react/async/src/functions.php',
+            '<?php namespace React\Async; function async(callable $function): callable { return $function; }',
+        );
 
-        file_put_contents($absolutePath, GenerativePluginProject::REACT_ASYNC_SOURCE);
+        new MonkeyPatcher()->compile(
+            $this->projectRoot,
+            new Item($this->projectRoot . 'vendor/react/async/src/functions.php', false),
+        );
 
-        new MonkeyPatcher()->compile($this->projectRoot, Item::forFileName($relativePath));
-
-        self::assertSame(GenerativePluginProject::REACT_ASYNC_SOURCE, file_get_contents($absolutePath));
-    }
-
-    /** @return iterable<string, array{string}> */
-    public static function provideSkippedRelativePaths(): iterable
-    {
-        yield 'functions' => ['src/functions.php'];
-        yield 'monkeyPatcher' => ['src/Composer/MonkeyPatcher.php'];
-        yield 'withSpanRegisterer' => ['src/Composer/WithSpanRegisterer.php'];
+        $contents = file_get_contents($this->projectRoot . 'vendor/react/async/src/functions.php');
+        self::assertIsString($contents);
+        self::assertStringContainsString('function async_original(callable $function): callable', $contents);
+        self::assertStringContainsString('\\Mammatus\\OpenTelemetry\\async($function)', $contents);
     }
 }

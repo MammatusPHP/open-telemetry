@@ -15,14 +15,15 @@ final class GenerativePluginsTest extends AsyncTestCase
 {
     use AssertsGenerativePlugin;
 
-    /** @return iterable<string, array{class-string<GenerativePlugin>, string, string, string}> */
+    /** @return iterable<string, array{class-string<GenerativePlugin>, string, string, string, int<0, max>}> */
     public static function providePlugins(): iterable
     {
         yield 'monkey-patcher' => [
             MonkeyPatcher::class,
-            'Locating files to monkey patch',
+            'Locating react/async functions file',
             'Found %d file(s) to monkey patch',
             'Monkey Patched React\Async\async to Mammatus\OpenTelemetry\async in %s second(s)',
+            1,
         ];
 
         yield 'with-span-registerer' => [
@@ -30,10 +31,14 @@ final class GenerativePluginsTest extends AsyncTestCase
             'Locating #[WithSpan] classes',
             'Found %d #[WithSpan] class(es)',
             'Generated WithSpan registrar in %s second(s)',
+            1,
         ];
     }
 
-    /** @param class-string<GenerativePlugin> $pluginClass */
+    /**
+     * @param class-string<GenerativePlugin> $pluginClass
+     * @param int<0, max>                    $expectedCollectors
+     */
     #[Test]
     #[DataProvider('providePlugins')]
     public function metadata(
@@ -41,9 +46,10 @@ final class GenerativePluginsTest extends AsyncTestCase
         string $init,
         string $collected,
         string $completion,
+        int $expectedCollectors,
     ): void {
         $this->assertGenerativePluginName($pluginClass);
         $this->assertGenerativePluginLog($pluginClass, $init, $collected, $completion);
-        $this->assertGenerativePluginHasFiltersAndCollectors(new $pluginClass());
+        $this->assertGenerativePluginHasFiltersAndCollectors(new $pluginClass(), $expectedCollectors);
     }
 }
