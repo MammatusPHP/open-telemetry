@@ -24,9 +24,6 @@ parameters:
 			identifier: ergebnis.noParameterWithNullableTypeDeclaration
 			path: ../../src/StreamTransportFactory.php
 		-
-			identifier: ergebnis.noParameterWithNullableTypeDeclaration
-			path: ../../src/Composer/Item.php
-		-
 			identifier: missingType.iterableValue
 			path: ../../src/PsrTransport.php
 		-
@@ -47,3 +44,6 @@ parameters:
 		-
 			identifier: phpunit.assertEmpty
 			path: ../../tests/**
+		-
+			identifier: shipmonk.deadMethod
+			path: ../../src/Composer/ProjectRoot.php

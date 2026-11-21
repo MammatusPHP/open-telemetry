@@ -48,13 +48,11 @@ final class WithSpanRegisterer implements GenerativePlugin
         /** @var array<string, string> $withSpanClasses */
         $withSpanClasses = [];
         foreach ($items as $item) {
-            if (! ($item instanceof Item) || $item->class === null) {
+            if (! ($item instanceof WithSpanItem)) {
                 continue;
             }
 
-            /** @var class-string $class */
-            $class                   = $item->class;
-            $withSpanClasses[$class] = $class;
+            $withSpanClasses[$item->class] = $item->class;
         }
 
         ksort($withSpanClasses);

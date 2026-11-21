@@ -10,17 +10,10 @@ use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
 use function file_get_contents;
 use function file_put_contents;
-use function in_array;
 use function str_replace;
 
 final class MonkeyPatcher implements GenerativePlugin
 {
-    private const array SKIP = [
-        'src/Composer/MonkeyPatcher.php',
-        'src/Composer/WithSpanRegisterer.php',
-        'src/functions.php',
-    ];
-
     public static function name(): string
     {
         return Plugin::name();
@@ -30,7 +23,7 @@ final class MonkeyPatcher implements GenerativePlugin
     {
         return Plugin::stageLog(
             $stage,
-            'Locating files to monkey patch',
+            'Locating react/async functions file',
             'Found %d file(s) to monkey patch',
             'Monkey Patched React\Async\async to Mammatus\OpenTelemetry\async in %s second(s)',
         );
@@ -51,30 +44,50 @@ final class MonkeyPatcher implements GenerativePlugin
     public function compile(string $rootPath, ItemContract ...$items): void
     {
         foreach ($items as $item) {
-            if (! ($item instanceof Item) || $item->fileName === null) {
+            if (! ($item instanceof Item)) {
                 continue;
             }
 
-            if (in_array($item->fileName, self::SKIP, true)) {
+            if ($item->alreadyPatched) {
                 continue;
             }
-
-            $filePath = ProjectRoot::absolutePath($rootPath, $item->fileName);
 
             /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileGetContents, ergebnis.noErrorSuppression */
-            $fileContents = @file_get_contents($filePath);
-            if ($fileContents === false) {
+            $fileContents = @file_get_contents($item->path);
+            if ($fileContents === false) { // @codeCoverageIgnore
                 continue;
             }
 
             $fileContents = str_replace(
-                ['React\Async\async'],
-                ['Mammatus\OpenTelemetry\async'],
+                'function async(callable $function): callable',
+                'function async_original(callable $function): callable',
                 $fileContents,
             );
 
+            $wrapper = <<<'PHP'
+
+/**
+ * @template T
+ * @template A1 (any number of function arguments, see https://github.com/phpstan/phpstan/issues/8214)
+ * @template A2
+ * @template A3
+ * @template A4
+ * @template A5
+ * @param callable(A1,A2,A3,A4,A5): (PromiseInterface<T>|T) $function
+ * @return callable(A1=,A2=,A3=,A4=,A5=): PromiseInterface<T>
+ * @since 4.0.0
+ * @see async_original()
+ */
+function async(callable $function): callable
+{
+    return \Mammatus\OpenTelemetry\async($function);
+}
+PHP;
+
+            $fileContents .= $wrapper;
+
             /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.filePutContents */
-            file_put_contents($filePath, $fileContents);
+            file_put_contents($item->path, $fileContents);
         }
     }
 }

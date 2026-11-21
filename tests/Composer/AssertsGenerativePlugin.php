@@ -28,9 +28,10 @@ trait AssertsGenerativePlugin
         self::assertSame($completion, $pluginClass::log(LogStages::Completion));
     }
 
-    protected function assertGenerativePluginHasFiltersAndCollectors(GenerativePlugin $plugin): void
+    /** @param int<0, max> $expectedCollectors */
+    protected function assertGenerativePluginHasFiltersAndCollectors(GenerativePlugin $plugin, int $expectedCollectors = 1): void
     {
         self::assertNotEmpty([...$plugin->filters()]);
-        self::assertCount(1, [...$plugin->collectors()]);
+        self::assertCount($expectedCollectors, [...$plugin->collectors()]);
     }
 }

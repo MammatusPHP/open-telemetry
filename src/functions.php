@@ -12,6 +12,7 @@ use React\Promise\PromiseInterface;
 use function define;
 use function defined;
 use function function_exists;
+use function React\Async\async_original;
 use function spl_object_id;
 
 /**
@@ -42,10 +43,10 @@ if (! function_exists(__NAMESPACE__ . '\\async')) {
     function async(callable $function): callable
     {
         if (Factory::fibersEnabled()) {
-            return \React\Async\async($function);
+            return async_original($function);
         }
 
-        return \React\Async\async(
+        return async_original(
             static function (mixed ...$args) use ($function): mixed {
                 $fiber = Fiber::getCurrent();
                 if (! ($fiber instanceof Fiber)) {
