@@ -16,15 +16,17 @@ use React\Http\Browser;
 use function React\Async\await;
 
 // phpcs:disable
-final readonly class OtlpHttpTransportFactory implements TransportFactoryInterface
+final class OtlpHttpTransportFactory implements TransportFactoryInterface
 {
     private const string DEFAULT_COMPRESSION = 'none';
 
-    public function __construct(
-        private Browser $browser,
-    )
-    {
+    /** @var list<PsrTransport> */
+    private array $transports = []; // @phpstan-ignore missingType.generics
 
+    public function __construct(
+        private readonly Browser|null $browser = null,
+        private readonly float $stopAcceptingDelay = PsrTransport::STOP_ACCEPTING_DELAY,
+    ) {
     }
 
     public function create(
@@ -43,8 +45,8 @@ final readonly class OtlpHttpTransportFactory implements TransportFactoryInterfa
             $compression = null;
         }
 
-        return new PsrTransport(
-            new readonly class ($this->browser) implements ClientInterface
+        $transport = new PsrTransport(
+            new readonly class ($this->browser ?? new Browser()) implements ClientInterface
             {
                 public function __construct(private Browser $browser)
                 {
@@ -64,6 +66,17 @@ final readonly class OtlpHttpTransportFactory implements TransportFactoryInterfa
             PsrUtils::compression($compression),
             $retryDelay,
             $maxRetries,
+            $this->stopAcceptingDelay,
         );
+        $this->transports[] = $transport;
+
+        return $transport;
+    }
+
+    public function enterShutdownMode(): void
+    {
+        foreach ($this->transports as $transport) {
+            $transport->enterShutdownMode();
+        }
     }
 }
